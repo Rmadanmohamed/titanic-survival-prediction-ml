@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+venv/
+.venv/
+env/
+
+# Node / frontend
+node_modules/
+.next/
+dist/
+build/
+coverage/
+.turbo/
+.vercel/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Temporary files
+tmp*/
+tmp_*
+*.tmp
+*.log
+
+# Large local artifacts
+# Add specific large local files here if needed.

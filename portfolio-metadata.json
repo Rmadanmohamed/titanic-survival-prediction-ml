@@ -1,0 +1,12 @@
+{
+  "repo": "titanic-survival-prediction-ml",
+  "title": "Titanic Survival Prediction ML",
+  "category": "Data-Science-Projects",
+  "description": "A classic Titanic survival prediction notebook with preprocessing, model training, and accuracy evaluation.",
+  "topics": [
+    "data-science",
+    "classification",
+    "kaggle",
+    "scikit-learn"
+  ]
+}
