@@ -1,5 +1,7 @@
 # Titanic Survival Prediction ML
 
+> **Phase 2 repair branch:** Set `TITANIC_DATA_DIR` to the directory containing the original labeled `train.csv` and unlabeled `test.csv`. The repaired workflow separates the two files, excludes passenger IDs from features, fits median imputation inside the training pipeline, validates on a held-out stratified split, and refits the original GradientBoosting classifier on labeled data for inference. `submission.csv` preserves test passenger IDs in order. The unrelated exploratory appendix is retained for historical continuity and is not part of the Titanic evaluation. No original data or performance results were validated. The historical description below documents the pre-repair baseline; use the instructions above for the repaired notebook. Full execution and dependency resolution are pending.
+
 ## Overview and problem statement
 
 Explore passenger survival classification with tabular passenger records and compare classical supervised models. The notebook also contains unrelated synthetic light-curve and path-planning experiments; those are not Titanic model features.
