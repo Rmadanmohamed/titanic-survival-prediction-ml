@@ -6,7 +6,7 @@ Explore passenger survival classification with tabular passenger records and com
 
 ## Technology stack and prerequisites
 
-Python 3 and a notebook runtime are required (exact Python version unspecified). [requirements.txt](requirements.txt) declares matplotlib, numpy, pandas, scikit-learn, seaborn; no exact versions are pinned. Additional imports not directly declared: networkx, scipy. Local Jupyter must be installed separately. No GPU requirement is documented.
+Python 3 and a notebook runtime are required (exact Python version unspecified). [requirements.txt](requirements.txt) declares matplotlib, numpy, pandas, scikit-learn, seaborn; no exact versions are pinned. NetworkX and SciPy are declared for the separate path experiments. Local Jupyter must be installed separately. No GPU requirement is documented.
 
 ## Project structure
 
@@ -16,7 +16,7 @@ Python 3 and a notebook runtime are required (exact Python version unspecified).
 
 ## Dataset and preprocessing
 
-Supply `train.csv` and `test.csv` under `/content/`; not bundled, provenance and license unspecified. The code assigns the training CSV to variable `test` and the test CSV to `train`. The labeled table must include `Survived`, `PassengerId`, `Age`, `Sex`, `Pclass` and columns dropped by cleaning (`Name`, `Ticket`, `Cabin`, `Embarked`, `Fare`). Age is median-filled and sex mapped to binary values.
+Supply `train.csv` and `test.csv` under `/content/`; not bundled, provenance and license unspecified. The repair branch loads labeled training and unlabeled inference data separately. The labeled table must include `Survived`, `PassengerId`, `Age`, `Sex`, `Pclass` and columns dropped by cleaning (`Name`, `Ticket`, `Cabin`, `Embarked`, `Fare`). Sex is mapped to binary values; median imputation is fitted only within each training pipeline.
 
 ## Model and workflow
 
@@ -34,7 +34,7 @@ Activate with `source .venv/bin/activate` (Linux/macOS) or `.venv\Scripts\Activa
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pip install jupyter networkx scipy
+python -m pip install jupyter
 jupyter notebook notebooks/titanic-survival-prediction.ipynb
 ```
 
@@ -46,7 +46,7 @@ No environment variables are required by the reviewed notebook code. Data paths 
 
 ## Usage, evaluation and limitations
 
-Run the Titanic section separately, inspect the corrected split and compare printed holdout accuracy. The submission code predicts on the labeled dataset rather than the unlabeled input and contains an earlier incorrect assignment and an indented statement; do not treat the resulting CSV as a valid competition submission. No saved accuracy results found. The unrelated path-planning code includes an artificial delay in a Dijkstra baseline, so its timings are not fair benchmarks.
+Run the Titanic section separately, inspect the corrected split and compare printed holdout accuracy. The final gradient boosting pipeline is fitted on the labeled data after holdout comparison and predicts on the external test features; submission preserves PassengerId. The original dataset has not been used to validate this change. No saved accuracy results found. The unrelated path-planning code includes an artificial delay in a Dijkstra baseline, so its timings are not fair benchmarks.
 
 ## Testing and validation
 
@@ -61,3 +61,7 @@ No standalone screenshots or verified live demo were found. Visualizations are g
 **Ramadan Mohamed Hassan** — AI Engineer | AI Researcher | AI Automation | LLM & RAG Systems | Machine Learning
 
 [Portfolio](https://ramadan-ai-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/ramadan-mohamed-89085a366/) · [GitHub](https://github.com/Rmadanmohamed) · [Email](mailto:ramadanmohameddd3@gmail.com)
+
+## Repair-branch validation status
+
+The changed notebook was statically inspected and saved on a review branch. Original datasets are unavailable to this audit, and no notebook training, test scores, dependency resolution or end-to-end execution is claimed. Dependency versions remain unpinned until a compatible environment can be verified.
